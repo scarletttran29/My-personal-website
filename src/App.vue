@@ -1,0 +1,75 @@
+<template>
+  <v-app :style="{background: $vuetify.theme.themes[theme].background}">
+    <navbar />
+    <!-- Home Page Container -->
+    <v-container app id="home">
+      <home-page />
+    </v-container>
+    <!-- About Me -->
+    <v-container class="pt-8"  id="aboutme">
+      <v-row class="d-flex justify-center">
+        <h1 :class="{'small-h1': this.$vuetify.breakpoint.xs, 'med-h1': this.$vuetify.breakpoint.sm}">Who Am I?</h1>
+      </v-row>
+      <about-me />
+    </v-container>
+    <v-container class="pt-8"  id="utmsam">
+      <v-row class="d-flex justify-center">
+        <h2 :class="{'small-h1': this.$vuetify.breakpoint.xs, 'med-h1': this.$vuetify.breakpoint.sm}">About the <a href="http://utmsam.sa.utoronto.ca" style="color:white" target="_blank">Society for Algorithmic Modelling</a> </h2>
+      </v-row>
+      <utmsam />
+    </v-container>
+    <!-- Projects Container -->
+    <v-container class="pt-8" id="projects">
+      <Projects />
+    </v-container>
+    <!-- Last Indentation -->
+    <div style="height: 50px;" />
+    <bottom-app-bar />
+  </v-app>
+</template>
+
+<script>
+import Navbar from "./components/Navbar.vue";
+import BottomAppBar from "./components/BottomAppBar.vue";
+import HomePage from "./views/HomePage.vue";
+import Projects from "./views/Projects.vue";
+import AboutMe from "./views/AboutMe.vue";
+import utmsam from "./views/utmsam.vue";
+
+export default {
+  name: "App",
+
+  components: {
+    HomePage,
+    Navbar,
+    BottomAppBar,
+    Projects,
+    AboutMe,
+    utmsam,
+  },
+
+  data() {
+    return {};
+  },
+  computed:{
+    theme(){
+      return (this.$vuetify.theme.dark) ? 'dark' : 'light'
+    }
+  }
+};
+</script>
+
+<style>
+h1 {
+  font-size: 80px;
+}
+.med-h1 {
+  font-size: 60px;
+}
+.small-h1 {
+  font-size: 45px;
+}
+.website-background {
+  background: white;
+}
+</style>
